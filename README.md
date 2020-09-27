@@ -1,4 +1,4 @@
-# Expense_Tracker
+# Chala Easy Error
 
 A new Flutter project.
 
