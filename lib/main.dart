@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import './widgets/new_transaction.dart';
 import './widgets/chart.dart';
 import './widgets/transaction_list.dart';
@@ -111,27 +110,30 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return Scaffold(
       appBar: appBar,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-                height: (MediaQuery.of(context).size.height -
+      body: ListView(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                  height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height -
+                      MediaQuery.of(context).padding.top) *
+                      0.4,
+                  child: Chart(_recentTransactions)),
+              Container(
+                child: Container(
+                    height: (MediaQuery.of(context).size.height -
                         appBar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.4,
-                child: Chart(_recentTransactions)),
-            Expanded(
-              child: Container(
-                  height: (MediaQuery.of(context).size.height -
-                          appBar.preferredSize.height -
-                          MediaQuery.of(context).padding.top) *
-                      0.6,
-                  child:
-                      TransactionList(_userTransactions, _deleteTransaction)),
-            ),
-          ],
-        ),
+                        0.6,
+                    child:
+                    TransactionList(_userTransactions, _deleteTransaction)),
+              ),
+            ],
+          ),
+        ],
+
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
